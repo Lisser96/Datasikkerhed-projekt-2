@@ -1,0 +1,333 @@
+@use 'partial';
+
+/*Generel*/
+
+html, body {
+    font-family: partial.$font;
+    background-color: partial.$bg-color;
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        p{
+            font-size: 17px;
+            color: partial.$text-color;
+            line-height: 1.5;
+        }
+
+        h1,h2,h3,h4 {
+            font-weight: 400;
+            color: partial.$text-color;
+        }
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+/*navigation*/
+
+header {
+    grid-column: 1/1;
+    @include partial.flex($justify: space-between);
+    background-color: partial.$nav-color;
+    border-bottom: 20px solid partial.$primary-color;
+}
+
+nav {
+    color: partial.$text-color;
+    height: 2em;
+    padding: 2em;
+    @include partial.flex($justify: space-between);
+
+        img {
+            width: 190px;
+            padding: 40px;
+            left: 5%;
+        }
+
+        ul { 
+            @include partial.flex;
+            list-style-type: none;
+            padding: 15px;
+            gap: 65px;
+        }
+
+        a{
+            color: partial.$text-color;
+            margin: 5px;
+            font-size: 15px;
+            font-weight: 400;
+            text-decoration: none;
+            text-shadow: 0px 0px 0px #274018;
+
+        &:hover{
+            color: partial.$secondary-color;
+        }
+    }
+}
+
+.active {
+    color: partial.$primary-color
+}
+
+/*Headerbillede*/
+.header-img {
+    position: relative;
+    margin-bottom: 0.1em;
+
+
+        .banner-tekst{
+            position: absolute;
+            left: 5%;
+            top: 5%;
+            text-shadow: partial.$text-shadow;
+       }
+
+        h1 {
+            font-size: 3.5vw;
+        }
+
+        p {
+            font-size: 2vw;
+        }
+
+        a{
+            @include partial.btn;    /*kalder mixin*/
+            position: absolute;
+
+
+               &:hover{
+                background-color: partial.$secondary-color;
+                transition: 0.4s ease-in-out
+               }
+        }
+
+        .bg-billede-desktop {
+            display:none;
+        }
+}
+
+/*Hovedindhold styling*/
+/*grid container*/
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.grid-row {
+    display: flex;
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(70px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.animate-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.grid-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-right: 100px;
+    color: white;
+
+    img  {
+        width: 520px;
+        padding: 75px;
+        margin-right: 20px;
+    }
+}
+
+.text-content {
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: white;
+}
+
+.text-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*Footer*/
+footer {
+    @include partial.flex($justify: space-between);
+    background-color: partial.$bg-color;
+    color: partial.$text-color;
+    padding: 20px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 20px solid partial.$primary-color;
+    border-top: 20px solid partial.$primary-color;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-left{
+    float: left;
+    padding: 25px;
+    font-size: 15px;
+}
+
+.footer-right {
+    float: right;
+
+    ul {
+        list-style-type: none;
+        padding: 0px;
+        padding-right: 50px;
+    }
+
+    ul li {
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: partial.$text-color;
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+// Mobil//
+
+@media screen and (max-width: 900px) {
+    .header {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 10px 10px;
+        width: 30px;
+        margin-right: 35px;
+        justify-content: center;            
+
+        img {
+            width: 100px;
+            margin-left: 60px;
+            display: block;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin: 10px;
+            padding: 10px;
+            list-style-type: none;
+            align-items: center;
+            gap: 0;
+            white-space: nowrap;
+        }
+
+        li {
+            flex: 1;
+            text-align: center;
+            margin: 0 0;
+        }
+        a {
+            display: block;
+            padding: 6px;
+            font-size: 1.5vw;
+        }
+    }
+        
+    .header-img {
+        .banner-tekst{
+            left: 10%;
+            top: 20%;
+            font-size: 4vw;
+        }
+            
+        h1 {
+            font-size: 6vw;
+        }
+        
+        p {
+            font-size: 4vw;
+        }
+        
+        a{
+            font-size: 3.5vw;
+        }
+
+        .bg-billede-desktop {
+            display: none;
+        }
+
+        .bg-billede-mobil {
+            display: block;
+        }
+    }
+    .grid-container {
+        width: 100%;
+        padding: 1em;
+    }
+
+    .grid-row {
+        flex-direction: column;
+    }
+
+    .grid-cell {
+        padding: 10px;
+        align-items: flex-start;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .text-content {
+        transition: opacity 0.5s ease;
+        opacity: 0;
+        font-size: 0.9em;
+        padding: 1em;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-left, .footer-right {
+        text-align: center;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,30 @@
+/*Variabler*/
+$bg-color: #000000;
+$nav-color: #000000;
+$footer-color: #000000;
+$primary-color:#509874;
+$secondary-color: #FCC333;
+$text-color: #ffffff;
+$font: Georgia; 
+$text-shadow: 1px 1px 1px #376a50;
+
+/*Mixins*/
+@mixin flex ($justify: center, $align: center) {
+    display: flex;
+    align-items: $align;
+}
+
+/*btn = button*/
+
+@mixin btn ($bg-color: $primary-color, $btn-padding: 0.8em
+1em ) {
+    background-color: $bg-color;
+    padding: $btn-padding;
+    border-radius: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+}
+
+/*cta= call to action*/
+/*vw= viewportwidth*/
